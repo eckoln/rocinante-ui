@@ -1,4 +1,5 @@
-import { w, W } from "windstitch";
+import { w } from "windstitch";
+import type { W } from "windstitch";
 
 export const Button = w.button(
   "hover:shadow-outline text-center font-medium focus:outline-none focus:ring-4 ring-opacity-30",
