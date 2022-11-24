@@ -6,7 +6,9 @@
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "README.md",
+    "package.json"
   ],
   "scripts": {
     "build": "tsup",
@@ -37,7 +39,9 @@
     "react-dom": "^18.2.0",
     "tailwindcss": "^3.2.4",
     "tsup": "^6.5.0",
-    "typescript": "^4.9.3",
+    "typescript": "^4.9.3"
+  },
+  "dependencies": {
     "windstitch": "^0.3.0"
   }
 }
