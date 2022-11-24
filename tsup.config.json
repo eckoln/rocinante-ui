@@ -1,0 +1,8 @@
+{
+  "format": ["esm", "cjs"],
+  "dts": true,
+  "clean": true,
+  "minify": true,
+  "splitting": true,
+  "entry": ["src/index.tsx"]
+}
