@@ -1,29 +1,63 @@
-import { w } from "windstitch";
-import type { W } from "windstitch";
+import React from "react";
 
-export const Button = w.button(
-  "hover:shadow-outline text-center font-medium focus:outline-none focus:ring-4 ring-opacity-30",
+import { cva, cx } from "class-variance-authority";
+import type { VariantProps } from "class-variance-authority";
+
+const button = cva(
+  "inline-flex items-center justify-center text-center font-medium space-x-2 rounded focus:outline-none disabled:opacity-30",
   {
     variants: {
-      color: {
-        gray: "bg-gray-300 hover:bg-gray-400 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-900 dark:text-white ring-gray-400",
-        violet:
-          "bg-violet-500 hover:bg-violet-400  dark:bg-violet-700  dark:hover:bg-violet-600 text-white  dark:text-white ring-violet-400",
-      },
-      size: {
-        xs: "px-1.5 py-0.5 rounded text-xs",
-        sm: "px-2 py-1 rounded-md text-sm",
-        base: "px-3 py-2 rounded-md text-base",
-        md: "px-4 py-3 rounded-md text-lg",
-        lg: "px-5 py-4 rounded-lg text-lg",
-        xl: "px-6 py-5 rounded-lg text-xl",
-      },
+      intent: {},
+      size: {},
     },
-    defaultVariants: {
-      color: "gray",
-      size: "base",
-    },
+    compoundVariants: [{}],
+    defaultVariants: {},
   }
 );
+const icon = cx("h-4 w-4");
 
-export type Props = W.Infer<typeof Button>;
+type ButtonProps = {
+  startIcon?: React.FC<React.ComponentProps<"svg">>;
+  endIcon?: React.FC<React.ComponentProps<"svg">>;
+};
+
+export interface Props
+  extends ButtonProps,
+    React.ComponentProps<"button">,
+    VariantProps<typeof button> {}
+
+export default function Button({
+  intent,
+  size,
+  startIcon,
+  endIcon,
+  className,
+  children,
+  ...props
+}: Props) {
+  const StartIconComponent = startIcon;
+  const EndIconComponent = endIcon;
+
+  return (
+    <button
+      className={button({
+        intent,
+        size,
+        className,
+      })}
+      {...props}
+    >
+      {StartIconComponent && (
+        <span>
+          <StartIconComponent className={icon} />
+        </span>
+      )}
+      <span>{children}</span>
+      {EndIconComponent && (
+        <span>
+          <EndIconComponent className={icon} />
+        </span>
+      )}
+    </button>
+  );
+}
