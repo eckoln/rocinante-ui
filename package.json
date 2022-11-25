@@ -8,9 +8,7 @@
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "files": [
-    "dist",
-    "README.md",
-    "package.json"
+    "dist"
   ],
   "scripts": {
     "build": "tsup",
@@ -44,7 +42,6 @@
     "typescript": "^4.9.3"
   },
   "dependencies": {
-    "class-variance-authority": "^0.3.0",
-    "windstitch": "^0.3.0"
+    "class-variance-authority": "^0.3.0"
   }
 }

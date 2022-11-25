@@ -1,5 +1,5 @@
 import type { ComponentStory, ComponentMeta } from "@storybook/react";
-import { BsArrowRight, BsSpotify } from "react-icons/bs";
+import { BsArrowRight } from "react-icons/bs";
 
 import Button from "./Button";
 
@@ -14,7 +14,7 @@ export const Filled: ComponentStory<typeof Button> = (args) => {
 
 export const WithIcon: ComponentStory<typeof Button> = (args) => {
   return (
-    <Button {...args} endIcon={BsSpotify}>
+    <Button {...args} endIcon={BsArrowRight}>
       Button
     </Button>
   );
