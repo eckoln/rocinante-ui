@@ -1,4 +1,4 @@
-import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import type { ComponentMeta, ComponentStory } from "@storybook/react";
 import { BsArrowRight } from "react-icons/bs";
 
 import Button from "./Button";
@@ -8,14 +8,27 @@ export default {
   component: Button,
 } as ComponentMeta<typeof Button>;
 
-export const Filled: ComponentStory<typeof Button> = (args) => {
+const Default: ComponentStory<typeof Button> = (args) => {
   return <Button {...args}>Button</Button>;
 };
 
-export const WithIcon: ComponentStory<typeof Button> = (args) => {
+export const Base = Default.bind({});
+Default.args = {
+  intent: "primary",
+  size: "sm",
+};
+
+const WithIcon: ComponentStory<typeof Button> = (args) => {
   return (
-    <Button {...args} endIcon={BsArrowRight}>
+    <Button startIcon={BsArrowRight} {...args}>
       Button
     </Button>
   );
+};
+
+export const StartIcon = WithIcon.bind({});
+Default.args = {
+  intent: "primary",
+  size: "sm",
+  startIcon: BsArrowRight,
 };

@@ -1,20 +1,29 @@
 import React from "react";
 
-import { cva, cx } from "class-variance-authority";
 import type { VariantProps } from "class-variance-authority";
+import { cva, cx } from "class-variance-authority";
 
-const button = cva(
-  "inline-flex items-center justify-center text-center font-medium space-x-2 rounded focus:outline-none disabled:opacity-30",
+const buttonStyles = cva(
+  "inline-flex items-center justify-center rounded-xl font-semibold transition-colors focus:outline-none text-sm text-center disabled:opacity-30 disabled:cursor-not-allowed space-x-2",
   {
     variants: {
-      intent: {},
-      size: {},
+      intent: {
+        primary: "text-white bg-green-600 hover:bg-green-700",
+        secondary: "text-white bg-gray-600 hover:bg-gray-700",
+        danger: "text-white bg-red-600 hover:bg-red-700",
+        ghost: "text-gray-400 bg-transparent hover:text-white hover:bg-white/5",
+      },
+      size: {
+        sm: "px-3 py-2",
+      },
     },
-    compoundVariants: [{}],
-    defaultVariants: {},
+    defaultVariants: {
+      intent: "primary",
+      size: "sm",
+    },
   }
 );
-const icon = cx("h-4 w-4");
+const iconStyles = cx("h-4 w-4");
 
 type ButtonProps = {
   startIcon?: React.FC<React.ComponentProps<"svg">>;
@@ -24,7 +33,7 @@ type ButtonProps = {
 export interface Props
   extends ButtonProps,
     React.ComponentProps<"button">,
-    VariantProps<typeof button> {}
+    VariantProps<typeof buttonStyles> {}
 
 export default function Button({
   intent,
@@ -40,7 +49,7 @@ export default function Button({
 
   return (
     <button
-      className={button({
+      className={buttonStyles({
         intent,
         size,
         className,
@@ -49,13 +58,13 @@ export default function Button({
     >
       {StartIconComponent && (
         <span>
-          <StartIconComponent className={icon} />
+          <StartIconComponent className={iconStyles} />
         </span>
       )}
       <span>{children}</span>
       {EndIconComponent && (
         <span>
-          <EndIconComponent className={icon} />
+          <EndIconComponent className={iconStyles} />
         </span>
       )}
     </button>
