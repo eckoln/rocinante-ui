@@ -1,7 +1,7 @@
 import { classed, DerivedComponentType } from "@tw-classed/react";
 import React from "react";
 
-const StyledHeading = classed("h6", {
+const StyledHeading = classed.h6({
   base: "font-bold",
   variants: {
     size: {
