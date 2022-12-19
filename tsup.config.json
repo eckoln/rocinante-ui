@@ -4,5 +4,5 @@
   "clean": true,
   "minify": true,
   "splitting": true,
-  "entry": ["src/index.tsx"]
+  "entry": ["src/index.ts"]
 }
