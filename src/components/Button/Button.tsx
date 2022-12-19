@@ -36,9 +36,3 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     );
   }
 ) as DerivedComponentType<typeof StyledButton, ButtonProps>;
-
-() => (
-  <Button variant="danger" as="a" href="/">
-    Click me
-  </Button>
-);

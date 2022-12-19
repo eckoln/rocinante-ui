@@ -25,9 +25,3 @@ export const Heading = React.forwardRef<HTMLHeadingElement, HeadingProps>(
     return <StyledHeading {...props} ref={ref} />;
   }
 ) as DerivedComponentType<typeof StyledHeading, HeadingProps>;
-
-() => {
-  <Heading as="h1" size="h1">
-    My Title
-  </Heading>;
-};
