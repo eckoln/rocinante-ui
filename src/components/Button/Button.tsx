@@ -1,7 +1,7 @@
 import { classed, DerivedComponentType } from "@tw-classed/react";
 import React from "react";
 
-const StyledButton = classed("button", {
+const StyledButton = classed.button({
   base: "inline-flex items-center justify-center rounded-xl font-semibold transition-colors focus:outline-none text-sm text-center disabled:opacity-30 disabled:cursor-not-allowed space-x-2",
   variants: {
     variant: {
